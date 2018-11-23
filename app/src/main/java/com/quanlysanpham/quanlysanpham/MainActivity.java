@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.quanlysanpham.sanpham.DanhSachSanPham;
+import com.quanlysanpham.phanloai.DanhSachPhanLoai;
 
 public class MainActivity extends AppCompatActivity {
     EditText txtTaikhoan , txtMatkhau;
@@ -34,14 +34,18 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = "admin";
-                String password = "admin";
+                String username = "";
+                String password = "";
 
                 if (txtTaikhoan.getText().toString().equals(username) && txtMatkhau.getText().toString().equals(password))
                 {
                     Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(MainActivity.this,DanhSachSanPham.class);
+                    Intent intent = new Intent(MainActivity.this,DanhSachPhanLoai.class);
                     startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Đăng Nhập Thất Bại",Toast.LENGTH_LONG).show();
                 }
             }
         });

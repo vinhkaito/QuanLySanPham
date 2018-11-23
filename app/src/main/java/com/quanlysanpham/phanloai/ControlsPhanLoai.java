@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.quanlysanpham.model.PhanLoai;
 import com.quanlysanpham.quanlysanpham.R;
@@ -15,12 +16,26 @@ public class ControlsPhanLoai extends AppCompatActivity {
     EditText txtMapl;
     Button btnTienHanhPL;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controls_phan_loai);
         addControls();
         addEvents();
+        getDataFromIntent();
+    }
+
+    private void getDataFromIntent() {
+        Intent intent = getIntent();
+        if (intent.hasExtra("UpPL"))
+        {
+            PhanLoai pl = (PhanLoai) intent.getSerializableExtra("UpPL");
+            txtMapl.setText(pl.getMaPL() + "");
+            txtTenpl.setText(pl.getTenPL());
+            txtMapl.setEnabled(false);
+
+        }
     }
 
     private void addEvents() {
@@ -36,7 +51,7 @@ public class ControlsPhanLoai extends AppCompatActivity {
                 intent.putExtra("PL",pl);
                 setResult(12,intent);
                 finish();
-            }
+                }
         });
     }
 

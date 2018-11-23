@@ -4,6 +4,9 @@
         android:id="@+id/opmenutThemLoai"
         android:title="Thêm Phân Loại" />
     <item
+        android:id="@+id/opmenutDSSP"
+        android:title="Danh Sách Sản Phẩm" />
+    <item
         android:id="@+id/mnuThoat"
         android:title="Thoát" />
 </menu>

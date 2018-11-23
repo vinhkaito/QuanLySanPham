@@ -6,9 +6,6 @@ public class PhanLoai implements Serializable {
     int MaPL;
     String TenPL;
 
-    public PhanLoai() {
-    }
-
     public PhanLoai(int maPL, String tenPL) {
         MaPL = maPL;
         TenPL = tenPL;
@@ -28,5 +25,10 @@ public class PhanLoai implements Serializable {
 
     public void setTenPL(String tenPL) {
         TenPL = tenPL;
+    }
+
+    @Override
+    public String toString() {
+        return MaPL + "-" + TenPL;
     }
 }

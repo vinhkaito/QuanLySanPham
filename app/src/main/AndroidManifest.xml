@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.quanlysanpham.sanpham.DanhSachSanPham" />
         <activity android:name="com.quanlysanpham.phanloai.ControlsPhanLoai" />
-        <activity android:name="com.quanlysanpham.phanloai.DanhSachPhanLoai"></activity>
+        <activity android:name="com.quanlysanpham.phanloai.DanhSachPhanLoai" />
+        <activity android:name="com.quanlysanpham.sanpham.DanhSachSanPham"></activity>
     </application>
 
 </manifest>

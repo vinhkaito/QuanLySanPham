@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.quanlysanpham.model.PhanLoai;
 import com.quanlysanpham.quanlysanpham.R;
@@ -30,12 +31,12 @@ public class AdapterPhanLoai extends ArrayAdapter<PhanLoai> {
     @Override
     public View getView(int position,  View convertView, ViewGroup parent) {
         View view = this.context.getLayoutInflater().inflate(this.resource,null);
-        EditText txtMapl = view.findViewById(R.id.txtMapl);
-        EditText txtTenpl = view.findViewById(R.id.txtTenpl);
+        TextView txtMaPL = view.findViewById(R.id.txtMaPL);
+        TextView txtTenPL = view.findViewById(R.id.txtTenPL);
 
         PhanLoai pl = this.objects.get(position);
-        txtMapl.setText(pl.getMaPL());
-        txtTenpl.setText(pl.getTenPL());
+        txtMaPL.setText(pl.getMaPL()+ "");
+        txtTenPL.setText(pl.getTenPL());
         return view;
     }
 }
