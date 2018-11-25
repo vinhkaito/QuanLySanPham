@@ -188,6 +188,4 @@ public class DanhSachPhanLoai extends AppCompatActivity {
 
         }
     }
-
-
 }
