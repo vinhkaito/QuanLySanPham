@@ -1,6 +1,8 @@
 package com.quanlysanpham.phanloai;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,11 +18,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.quanlysanpham.adapter.AdapterPhanLoai;
+import com.quanlysanpham.database.Database;
 import com.quanlysanpham.model.PhanLoai;
 import com.quanlysanpham.quanlysanpham.R;
 import com.quanlysanpham.sanpham.DanhSachSanPham;
 
 import java.util.ArrayList;
+
+import static android.icu.text.MessagePattern.ArgType.SELECT;
 
 public class DanhSachPhanLoai extends AppCompatActivity {
     AdapterPhanLoai adapter;
@@ -28,22 +33,39 @@ public class DanhSachPhanLoai extends AppCompatActivity {
     ArrayList<PhanLoai> dsPL;
     int pos = -1;
 
+    final String DATABASE_NAME = "QLSPDB.sqlite";
+    SQLiteDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danh_sach_phan_loai);
         addControls();
         addEvents();
-        fakedata();
+        //fakedata();
+        loaddata();
     }
 
-    private void fakedata() {
-        dsPL.add(new PhanLoai(1,"haha"));
-        dsPL.add(new PhanLoai(2,"hahai"));
-        dsPL.add(new PhanLoai(3,"haihai"));
-        dsPL.add(new PhanLoai(4,"haiha"));
-        adapter.notifyDataSetChanged();
+    private void loaddata() {
+        database = Database.initDatabase(this,DATABASE_NAME);
+        Cursor cursor  = database.rawQuery("SELECT * FROM PhanLoai",null);
+        for (int i=0 ; i < cursor.getCount() ;i++)
+        {
+            cursor.moveToPosition(i);
+            PhanLoai pl = new PhanLoai(cursor.getInt(0),cursor.getString(1));
+            dsPL.add(pl);
+            adapter.notifyDataSetChanged();
+        }
     }
+
+
+//    private void fakedata() {
+//        dsPL.add(new PhanLoai(1,"haha"));
+//        dsPL.add(new PhanLoai(2,"hahai"));
+//        dsPL.add(new PhanLoai(3,"haihai"));
+//        dsPL.add(new PhanLoai(4,"haiha"));
+//        adapter.notifyDataSetChanged();
+//    }
 
     private void addEvents() {
     }
@@ -127,6 +149,10 @@ public class DanhSachPhanLoai extends AppCompatActivity {
                 Intent intent = new Intent(DanhSachPhanLoai.this,DanhSachSanPham.class);
                 startActivity(intent);
                 break;
+            }
+            case R.id.opmenuThoat:
+            {
+
             }
         }
         return super.onOptionsItemSelected(item);

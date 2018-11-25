@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/opmenutThemLoai"
-        android:title="Thêm Phân Loại" />
+        android:title="Thêm Sản Phẩm" />
     <item
-        android:id="@+id/opmenutDSSP"
-        android:title="Danh Sách Sản Phẩm" />
+        android:id="@+id/opmenutDSPL"
+        android:title="Danh Sách Phân Loại" />
     <item
-        android:id="@+id/opmenuThoat"
+        android:id="@+id/mnuThoat"
         android:title="Thoát" />
 </menu>

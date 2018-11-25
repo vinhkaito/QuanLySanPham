@@ -18,7 +18,8 @@
         </activity>
         <activity android:name="com.quanlysanpham.phanloai.ControlsPhanLoai" />
         <activity android:name="com.quanlysanpham.phanloai.DanhSachPhanLoai" />
-        <activity android:name="com.quanlysanpham.sanpham.DanhSachSanPham"></activity>
+        <activity android:name="com.quanlysanpham.sanpham.DanhSachSanPham" />
+        <activity android:name="com.quanlysanpham.sanpham.ControlsSanPham"></activity>
     </application>
 
 </manifest>

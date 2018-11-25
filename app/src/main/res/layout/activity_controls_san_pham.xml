@@ -5,19 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.quanlysanpham.sanpham.DanhSachSanPham">
+    tools:context="com.quanlysanpham.sanpham.ControlsSanPham">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Danh Sách Sản Phẩm"
+        android:text="Controls Sản Phẩm"
         android:gravity="center"
         android:textSize="30sp"
         android:textStyle="bold"
         />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
 
 </LinearLayout>
