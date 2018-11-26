@@ -3,6 +3,7 @@ package com.quanlysanpham.sanpham;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,6 +34,19 @@ public class ControlsSanPham extends AppCompatActivity {
     }
 
     private void addEvents() {
+        btnTienHanhSP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (function == them)
+                {
+                    int MaSP = Integer.parseInt(txtMaSP.getText().toString());
+                    String TenSP = txtTenSP.getText().toString();
+                    String GiaSP = txtGiaSP.getText().toString();
+                    String XuatXuSP = txtXuatXuSP.getText().toString();
+                    //Làm tiếp ở đây
+                }
+            }
+        });
 
     }
 
