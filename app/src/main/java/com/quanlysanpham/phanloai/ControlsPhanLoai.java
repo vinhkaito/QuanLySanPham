@@ -14,9 +14,8 @@ import com.quanlysanpham.quanlysanpham.R;
 
 public class ControlsPhanLoai extends AppCompatActivity {
     EditText txtTenpl;
-    EditText txtMapl;
     Button btnTienHanhPL;
-    TextView txtPhanLoai;
+    TextView txtTitlePL;
     int function = -1;
     final int them = 1;
     final int sua = 0;
@@ -37,9 +36,7 @@ public class ControlsPhanLoai extends AppCompatActivity {
         if (intent.hasExtra("UpPL"))
         {
             PhanLoai pl = (PhanLoai) intent.getSerializableExtra("UpPL");
-            txtMapl.setText(pl.getMaPL() + "");
             txtTenpl.setText(pl.getTenPL());
-            txtMapl.setEnabled(false);
 
         }
     }
@@ -71,18 +68,17 @@ public class ControlsPhanLoai extends AppCompatActivity {
     }
 
     private void addControls() {
-        txtMapl = findViewById(R.id.txtMapl);
         txtTenpl = findViewById(R.id.txtTenpl);
         btnTienHanhPL = findViewById(R.id.btnTienHanhPL);
-        txtPhanLoai = findViewById(R.id.txtPhanloai);
+        txtTitlePL = findViewById(R.id.txtTitlePL);
         intent = getIntent();
         if (intent.hasExtra("UpPL")) {
             function = sua;
-            txtPhanLoai.setText("Sửa Phân Loại");
+            txtTitlePL.setText("Cập Nhật Phân Loại");
         }
         else {
             function = them;
-            txtPhanLoai.setText("Thêm Phân Loại");
+            txtTitlePL.setText("Thêm Phân Loại");
         }
     }
 
