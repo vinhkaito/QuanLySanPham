@@ -1,9 +1,9 @@
 package com.quanlysanpham.phanloai;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -11,9 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,8 +23,6 @@ import com.quanlysanpham.sanpham.DanhSachSanPham;
 
 import java.util.ArrayList;
 
-import static android.icu.text.MessagePattern.ArgType.SELECT;
-
 public class DanhSachPhanLoai extends AppCompatActivity {
     AdapterPhanLoai adapter;
     ListView lvPhanLoai;
@@ -35,6 +31,12 @@ public class DanhSachPhanLoai extends AppCompatActivity {
 
     final String DATABASE_NAME = "QLSPDB.sqlite";
     SQLiteDatabase database;
+
+    final static int CapNhatPhanLoaiRequestCode = 11;
+    final static int CapNhatPhanLoaiResultCode = 12;
+    final static int ThemPhanLoaiRequestCode = 13;
+    final static int ThemPhanLoaiResultCode = 14;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,15 +106,20 @@ public class DanhSachPhanLoai extends AppCompatActivity {
                 PhanLoai pl = dsPL.get(pos);
                 Intent intent = new Intent(DanhSachPhanLoai.this,ControlsPhanLoai.class);
                 intent.putExtra("UpPL",pl);
-                startActivityForResult(intent,11);
+                startActivityForResult(intent,CapNhatPhanLoaiRequestCode);
                 break;
             }
             case R.id.comenuXoa:
             {
-                dsPL.remove(pos);
-                pos = -1;
-                adapter.notifyDataSetChanged();
-                Toast.makeText(getApplicationContext(), "Xóa Thành Công", Toast.LENGTH_LONG).show();
+                if (database.delete("PhanLoai" , "MaPhanLoai" + " = ? ", new String[]{String.valueOf(dsPL.get(pos).getMaPL())}) == 1) {
+                    dsPL.remove(pos);
+                    pos = -1;
+                    adapter.notifyDataSetChanged();
+                    Toast.makeText(getApplicationContext(), "Xóa Thành Công", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Xóa Không Thành Công", Toast.LENGTH_LONG).show();
+                }
                 break;
             }
         }
@@ -139,9 +146,8 @@ public class DanhSachPhanLoai extends AppCompatActivity {
         {
             case R.id.opmenutThemLoai:
             {
-                pos = -1;
                 Intent intent = new Intent(DanhSachPhanLoai.this,ControlsPhanLoai.class);
-                startActivityForResult(intent,11);
+                startActivityForResult(intent,ThemPhanLoaiRequestCode);
                 break;
             }
             case R.id.opmenutDSSP:
@@ -160,32 +166,39 @@ public class DanhSachPhanLoai extends AppCompatActivity {
 
 //    END OPTION MENU
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 11)
-        {
-            if (resultCode == 12)
-            {
-                if (data.hasExtra("PL"))
-                {
-                    PhanLoai pl = (PhanLoai) data.getSerializableExtra("PL");
-                    if(pos>=0)
-                    {
-                        PhanLoai selectPL = dsPL.get(pos);
-                        selectPL.setMaPL(pl.getMaPL());
-                        selectPL.setTenPL(pl.getTenPL());
-                        pos=-1;
-                        Toast.makeText(getApplicationContext(), "Cập Nhật Thành Công", Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        dsPL.add(pl);
-                        Toast.makeText(getApplicationContext(), "Thêm Phân Loại Thành Công", Toast.LENGTH_LONG).show();
-                    }
-                    adapter.notifyDataSetChanged();
-                }
-            }
+        if (requestCode == CapNhatPhanLoaiRequestCode && resultCode == CapNhatPhanLoaiResultCode && data.hasExtra("PL_CapNhat")) {
+            PhanLoai pl = (PhanLoai) data.getSerializableExtra("PL_CapNhat");
+            ContentValues values = new ContentValues();
+            values.put("TenPhanLoai", pl.getTenPL());
 
+            if (database.update("PhanLoai", values, "MaPhanLoai" + "= ?", new String[]{String.valueOf(pl.getMaPL())}) > 0) {
+                dsPL.set(dsPL.indexOf(dsPL.get(pos)), pl);
+                Toast.makeText(getApplicationContext(), "Cập Nhật Thành Công", Toast.LENGTH_LONG).show();
+                adapter.notifyDataSetChanged();
+            } else {
+                Toast.makeText(getApplicationContext(), "Cập Nhật Thất Bại", Toast.LENGTH_LONG).show();
+            }
+        }
+        if (requestCode == ThemPhanLoaiRequestCode && resultCode == ThemPhanLoaiResultCode && data.hasExtra("PL_Them")) {
+            PhanLoai pl = (PhanLoai) data.getSerializableExtra("PL_Them");
+            ContentValues values = new ContentValues();
+            values.put("TenPhanLoai", pl.getTenPL());
+
+            if (database.insert("PhanLoai",null,values) != -1) {
+                Cursor cursor = database.rawQuery("SELECT * FROM PhanLoai", null);
+                cursor.moveToLast();
+                pl.setMaPL(cursor.getInt(0));
+                dsPL.add(pl);
+                Toast.makeText(getApplicationContext(), "Thêm Thành Công", Toast.LENGTH_LONG).show();
+                adapter.notifyDataSetChanged();
+            } else {
+                Toast.makeText(getApplicationContext(), "Thêm Thất Bại", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
