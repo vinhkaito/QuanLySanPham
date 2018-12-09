@@ -1,6 +1,10 @@
 package com.quanlysanpham.sanpham;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,19 +14,27 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.quanlysanpham.database.Database;
+import com.quanlysanpham.model.PhanLoai;
+import com.quanlysanpham.model.SanPham;
+import com.quanlysanpham.phanloai.DanhSachPhanLoai;
 import com.quanlysanpham.quanlysanpham.R;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class ControlsSanPham extends AppCompatActivity {
     TextView txtTitleSP;
     EditText txtMaSP , txtTenSP , txtGiaSP , txtXuatXuSP ;
     Button btnChonhinh , btnTienHanhSP;
     ImageView ImgChonHinh;
-    Spinner phanloai;
+    private Spinner spnPhanloai;
 
     int function = -1;
     final int them = 1;
     final int sua = 0;
     Intent intent;
+
 
 
     @Override
@@ -32,6 +44,7 @@ public class ControlsSanPham extends AppCompatActivity {
         addControls();
         addEvents();
     }
+
 
     private void addEvents() {
         btnTienHanhSP.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +56,14 @@ public class ControlsSanPham extends AppCompatActivity {
                     String TenSP = txtTenSP.getText().toString();
                     String GiaSP = txtGiaSP.getText().toString();
                     String XuatXuSP = txtXuatXuSP.getText().toString();
-                    //Làm tiếp ở đây
+                    byte[] HinhSP = getByteArrayFromImageView(ImgChonHinh);
+
+
+                    SanPham sp = new SanPham(MaSP,TenSP,GiaSP,,XuatXuSP,HinhSP); //Làm tiếp ở đây
+                    Intent intent =getIntent();
+                    intent.putExtra("SP_Them",sp);
+                    setResult(DanhSachSanPham.ThemSanPhamResultCode,intent);
+                    finish();
                 }
             }
         });
@@ -52,7 +72,7 @@ public class ControlsSanPham extends AppCompatActivity {
 
     private void addControls() {
         txtTitleSP = findViewById(R.id.txtTitleSP);
-        phanloai = findViewById(R.id.phanloai);
+        spnPhanloai = findViewById(R.id.spnPhanloai);
         txtMaSP = findViewById(R.id.txtMaSP);
         txtTenSP = findViewById(R.id.txtTenSP);
         txtGiaSP = findViewById(R.id.txtGiaSP);
@@ -70,5 +90,16 @@ public class ControlsSanPham extends AppCompatActivity {
             txtTitleSP.setText("Thêm Sản Phẩm");
         }
 
+    }
+
+    private byte[] getByteArrayFromImageView(ImageView imgv){
+
+        BitmapDrawable drawable = (BitmapDrawable) imgv.getDrawable();
+        Bitmap bmp = drawable.getBitmap();
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
     }
 }

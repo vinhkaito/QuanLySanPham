@@ -158,7 +158,8 @@ public class DanhSachPhanLoai extends AppCompatActivity {
             }
             case R.id.opmenuThoat:
             {
-
+                finish();
+                break;
             }
         }
         return super.onOptionsItemSelected(item);

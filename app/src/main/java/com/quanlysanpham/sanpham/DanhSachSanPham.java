@@ -76,7 +76,8 @@ public class DanhSachSanPham extends AppCompatActivity {
             }
             case R.id.opmenuThoat:
             {
-
+                finish();
+                break;
             }
         }
         return super.onOptionsItemSelected(item);
