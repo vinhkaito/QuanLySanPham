@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,7 +29,7 @@ public class ControlsSanPham extends AppCompatActivity {
     EditText txtMaSP , txtTenSP , txtGiaSP , txtXuatXuSP ;
     Button btnChonhinh , btnTienHanhSP;
     ImageView ImgChonHinh;
-    private Spinner spnPhanloai;
+    Spinner spnPhanloai;
 
     int function = -1;
     final int them = 1;
@@ -59,8 +60,8 @@ public class ControlsSanPham extends AppCompatActivity {
                     byte[] HinhSP = getByteArrayFromImageView(ImgChonHinh);
 
 
-                    SanPham sp = new SanPham(MaSP,TenSP,GiaSP,,XuatXuSP,HinhSP); //Làm tiếp ở đây
-                    Intent intent =getIntent();
+                    SanPham sp = new SanPham(MaSP,TenSP,(PhanLoai)spnPhanloai.getSelectedItem(),HinhSP,GiaSP,XuatXuSP);
+                    Intent intent = getIntent();
                     intent.putExtra("SP_Them",sp);
                     setResult(DanhSachSanPham.ThemSanPhamResultCode,intent);
                     finish();
@@ -90,6 +91,10 @@ public class ControlsSanPham extends AppCompatActivity {
             txtTitleSP.setText("Thêm Sản Phẩm");
         }
 
+        ArrayList<PhanLoai> dsPL = DanhSachPhanLoai.dsPL;
+        ArrayAdapter<PhanLoai> adapter = new ArrayAdapter<PhanLoai>(ControlsSanPham.this, android.R.layout.simple_spinner_dropdown_item, dsPL);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnPhanloai.setAdapter(adapter);
     }
 
     private byte[] getByteArrayFromImageView(ImageView imgv){

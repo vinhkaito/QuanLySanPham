@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class DanhSachPhanLoai extends AppCompatActivity {
     AdapterPhanLoai adapter;
     ListView lvPhanLoai;
-    ArrayList<PhanLoai> dsPL;
+    public static ArrayList<PhanLoai> dsPL;
     int pos = -1;
 
     final String DATABASE_NAME = "QLSPDB.sqlite";
@@ -44,7 +44,6 @@ public class DanhSachPhanLoai extends AppCompatActivity {
         setContentView(R.layout.activity_danh_sach_phan_loai);
         addControls();
         addEvents();
-        //fakedata();
         loaddata();
     }
 
@@ -59,15 +58,6 @@ public class DanhSachPhanLoai extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         }
     }
-
-
-//    private void fakedata() {
-//        dsPL.add(new PhanLoai(1,"haha"));
-//        dsPL.add(new PhanLoai(2,"hahai"));
-//        dsPL.add(new PhanLoai(3,"haihai"));
-//        dsPL.add(new PhanLoai(4,"haiha"));
-//        adapter.notifyDataSetChanged();
-//    }
 
     private void addEvents() {
     }

@@ -1,6 +1,7 @@
 package com.quanlysanpham.sanpham;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,7 +22,6 @@ public class DanhSachSanPham extends AppCompatActivity {
     AdapterSanPham adapter;
     ListView lvSanPham;
     ArrayList<SanPham> dsSP;
-//    public static ArrayList<PhanLoai> dsPL;
     int pos = -1;
 
     final static int CapNhatSanPhamRequestCode = 15;
@@ -81,5 +81,11 @@ public class DanhSachSanPham extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // làm tiếp ở đây
     }
 }
