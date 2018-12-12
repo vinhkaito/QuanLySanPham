@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +25,8 @@ import com.quanlysanpham.phanloai.DanhSachPhanLoai;
 import com.quanlysanpham.quanlysanpham.R;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ControlsSanPham extends AppCompatActivity {
@@ -29,12 +34,14 @@ public class ControlsSanPham extends AppCompatActivity {
     EditText txtMaSP , txtTenSP , txtGiaSP , txtXuatXuSP ;
     Button btnChonhinh , btnTienHanhSP;
     ImageView ImgChonHinh;
-    Spinner spnPhanloai;
+    public static Spinner spnPhanloai;
 
     int function = -1;
     final int them = 1;
     final int sua = 0;
     Intent intent;
+
+    final static int ChonHinh = 19;
 
 
 
@@ -69,7 +76,33 @@ public class ControlsSanPham extends AppCompatActivity {
             }
         });
 
+        btnChonhinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, ChonHinh);
+            }
+        });
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == ChonHinh){
+            try {
+                Uri imageUri = data.getData();
+                InputStream is = getContentResolver().openInputStream(imageUri);
+                Bitmap bitmap = BitmapFactory.decodeStream(is);
+                ImgChonHinh.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 
     private void addControls() {
         txtTitleSP = findViewById(R.id.txtTitleSP);
@@ -107,4 +140,5 @@ public class ControlsSanPham extends AppCompatActivity {
         byte[] byteArray = stream.toByteArray();
         return byteArray;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.quanlysanpham.sanpham;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.quanlysanpham.adapter.AdapterSanPham;
 import com.quanlysanpham.model.PhanLoai;
@@ -86,6 +88,17 @@ public class DanhSachSanPham extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // làm tiếp ở đây
+        if (requestCode == ThemSanPhamRequestCode && resultCode == ThemSanPhamResultCode && data.hasExtra("SP_Them"))
+        {
+            Spinner spnPhanloai = ControlsSanPham.spnPhanloai;
+
+            SanPham sp = (SanPham) data.getSerializableExtra("SP_Them");
+            ContentValues values = new ContentValues();
+            values.put("MaSanPham", sp.getMaSP());
+            values.put("TenSanPham", sp.getTenSP());
+
+            //lam tiep o day
+
+        }
     }
 }
