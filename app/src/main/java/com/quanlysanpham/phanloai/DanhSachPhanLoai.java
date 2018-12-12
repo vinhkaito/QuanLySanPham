@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.quanlysanpham.adapter.AdapterPhanLoai;
 import com.quanlysanpham.database.Database;
+import com.quanlysanpham.map.MapsActivity;
 import com.quanlysanpham.model.PhanLoai;
 import com.quanlysanpham.quanlysanpham.R;
 import com.quanlysanpham.sanpham.DanhSachSanPham;
@@ -143,6 +144,12 @@ public class DanhSachPhanLoai extends AppCompatActivity {
             case R.id.opmenutDSSP:
             {
                 Intent intent = new Intent(DanhSachPhanLoai.this,DanhSachSanPham.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.opmenuMap:
+            {
+                Intent intent = new Intent(DanhSachPhanLoai.this,MapsActivity.class);
                 startActivity(intent);
                 break;
             }
