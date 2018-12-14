@@ -8,7 +8,7 @@
         android:title="Danh Sách Sản Phẩm" />
     <item
         android:id="@+id/opmenuMap"
-        android:title="Vị trí" />
+        android:title="Giới thiệu" />
     <item
         android:id="@+id/opmenuThoat"
         android:title="Thoát" />

@@ -2,6 +2,8 @@ package com.quanlysanpham.sanpham;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,8 +12,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.quanlysanpham.adapter.AdapterSanPham;
+import com.quanlysanpham.database.Database;
 import com.quanlysanpham.model.PhanLoai;
 import com.quanlysanpham.model.SanPham;
 import com.quanlysanpham.phanloai.ControlsPhanLoai;
@@ -26,6 +30,9 @@ public class DanhSachSanPham extends AppCompatActivity {
     ArrayList<SanPham> dsSP;
     int pos = -1;
 
+    final String DATABASE_NAME = "QLSPDB.sqlite";
+    SQLiteDatabase database;
+
     final static int CapNhatSanPhamRequestCode = 15;
     final static int CapNhatSanPhamResultCode = 16;
     final static int ThemSanPhamRequestCode = 17;
@@ -38,6 +45,20 @@ public class DanhSachSanPham extends AppCompatActivity {
         setContentView(R.layout.activity_danh_sach_san_pham);
         addControls();
         addEvents();
+        loaddata();
+    }
+
+    private void loaddata() {
+        database = Database.initDatabase(this,DATABASE_NAME);
+        Cursor cursor  = database.rawQuery("SELECT * FROM SanPham",null);
+        for (int i=0 ; i < cursor.getCount() ;i++)
+        {
+            cursor.moveToPosition(i);
+//            PhanLoai pl = DanhSachPhanLoai.dsPL; //lam tiep o day
+//            SanPham sp = new SanPham(cursor.getInt(0),cursor.getString(1),pl,cursor.getBlob(3),cursor.getString(4),cursor.getString(5));
+//            dsSP.add(sp);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     private void addEvents() {
@@ -90,15 +111,31 @@ public class DanhSachSanPham extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ThemSanPhamRequestCode && resultCode == ThemSanPhamResultCode && data.hasExtra("SP_Them"))
         {
-            Spinner spnPhanloai = ControlsSanPham.spnPhanloai;
-
             SanPham sp = (SanPham) data.getSerializableExtra("SP_Them");
             ContentValues values = new ContentValues();
             values.put("MaSanPham", sp.getMaSP());
             values.put("TenSanPham", sp.getTenSP());
+            values.put("LoaiSanPham", sp.getLoaiSP().getMaPL());
+            values.put("HinhSanPham", sp.getHinhSP());
+            values.put("GiaSanPham", sp.getGiaSP());
+            values.put("XuatXuSanPham", sp.getXuatxuSP());
 
-            //lam tiep o day
-
+            if (database.insert("SanPham",null,values) != -1)
+            {
+                Cursor cursor = database.rawQuery("SELECT * FROM SanPham", null);
+                cursor.moveToLast();
+                sp.setMaSP(cursor.getInt(0));
+                sp.setTenSP(cursor.getString(1));
+//                sp.setLoaiSP();                             ///// lam tiep o day
+                sp.setHinhSP(cursor.getBlob(3));
+                sp.setGiaSP(cursor.getString(4));
+                sp.setXuatxuSP(cursor.getString(5));
+                dsSP.add(sp);
+                Toast.makeText(getApplicationContext(), "Thêm Thành Công", Toast.LENGTH_LONG).show();
+                adapter.notifyDataSetChanged();
+            }else {
+                Toast.makeText(getApplicationContext(), "Thêm Thất Bại", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
