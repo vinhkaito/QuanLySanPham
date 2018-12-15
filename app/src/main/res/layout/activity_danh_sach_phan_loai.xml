@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Danh Sách Phân Loại"
+        android:text="@string/title_list_classify"
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="30sp"
@@ -31,7 +31,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mã Phân Loại"
+                    android:text="@string/code_classify"
                     android:textSize="20sp"
                     android:textColor="#000"
                     android:textStyle="bold"
@@ -52,7 +52,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tên Phân Loại"
+                    android:text="@string/name_classify"
                     android:textSize="20sp"
                     android:textColor="#000"
                     android:textStyle="bold"

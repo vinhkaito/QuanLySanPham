@@ -34,18 +34,18 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = "";
-                String password = "";
+                String username = "admin";
+                String password = "admin";
 
                 if (txtTaikhoan.getText().toString().equals(username) && txtMatkhau.getText().toString().equals(password))
                 {
-                    Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),R.string.login_success,Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(MainActivity.this,DanhSachPhanLoai.class);
                     startActivity(intent);
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"Đăng Nhập Thất Bại",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),R.string.login_fail,Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -117,11 +117,11 @@ public class ControlsSanPham extends AppCompatActivity {
         intent = getIntent();
         if (intent.hasExtra("UpSP")) {
             function = sua;
-            txtTitleSP.setText("Cập Nhật Sản Phẩm");
+            txtTitleSP.setText(R.string.update_product);
         }
         else {
             function = them;
-            txtTitleSP.setText("Thêm Sản Phẩm");
+            txtTitleSP.setText(R.string.add_product);
         }
 
         ArrayList<PhanLoai> dsPL = DanhSachPhanLoai.dsPL;

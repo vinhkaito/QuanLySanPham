@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/comenuCapNhat"
-        android:title="Cập Nhật"
+        android:title="@string/menu_update"
         />
     <item
         android:id="@+id/comenuXoa"
-        android:title="Xóa"
+        android:title="@string/menu_delete"
         />
 </menu>

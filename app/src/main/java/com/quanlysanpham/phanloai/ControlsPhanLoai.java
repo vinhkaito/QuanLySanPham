@@ -74,11 +74,11 @@ public class ControlsPhanLoai extends AppCompatActivity {
         intent = getIntent();
         if (intent.hasExtra("UpPL")) {
             function = sua;
-            txtTitlePL.setText("Cập Nhật Phân Loại");
+            txtTitlePL.setText(R.string.update_classify);
         }
         else {
             function = them;
-            txtTitlePL.setText("Thêm Phân Loại");
+            txtTitlePL.setText(R.string.add_classify);
         }
     }
 

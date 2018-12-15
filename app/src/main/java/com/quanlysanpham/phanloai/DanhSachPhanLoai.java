@@ -106,10 +106,10 @@ public class DanhSachPhanLoai extends AppCompatActivity {
                     dsPL.remove(pos);
                     pos = -1;
                     adapter.notifyDataSetChanged();
-                    Toast.makeText(getApplicationContext(), "Xóa Thành Công", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),R.string.delete_success, Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "Xóa Không Thành Công", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),R.string.delete_fail, Toast.LENGTH_LONG).show();
                 }
                 break;
             }
@@ -176,10 +176,10 @@ public class DanhSachPhanLoai extends AppCompatActivity {
 
             if (database.update("PhanLoai", values, "MaPhanLoai" + "= ?", new String[]{String.valueOf(pl.getMaPL())}) > 0) {
                 dsPL.set(dsPL.indexOf(dsPL.get(pos)), pl);
-                Toast.makeText(getApplicationContext(), "Cập Nhật Thành Công", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.update_success, Toast.LENGTH_LONG).show();
                 adapter.notifyDataSetChanged();
             } else {
-                Toast.makeText(getApplicationContext(), "Cập Nhật Thất Bại", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.update_fail, Toast.LENGTH_LONG).show();
             }
         }
         if (requestCode == ThemPhanLoaiRequestCode && resultCode == ThemPhanLoaiResultCode && data.hasExtra("PL_Them")) {
@@ -192,10 +192,10 @@ public class DanhSachPhanLoai extends AppCompatActivity {
                 cursor.moveToLast();
                 pl.setMaPL(cursor.getInt(0));
                 dsPL.add(pl);
-                Toast.makeText(getApplicationContext(), "Thêm Thành Công", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.add_success, Toast.LENGTH_LONG).show();
                 adapter.notifyDataSetChanged();
             } else {
-                Toast.makeText(getApplicationContext(), "Thêm Thất Bại", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),R.string.add_fail, Toast.LENGTH_LONG).show();
             }
         }
     }

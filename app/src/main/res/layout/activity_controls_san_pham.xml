@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nhập Mã Sản Phẩm:"
+            android:text="@string/add_code_prodcut"
             android:textColor="#000000"
             android:layout_marginLeft="10sp"
             />
@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nhập Tên Sản Phẩm:"
+            android:text="@string/add_name_product"
             android:textColor="#000000"
             android:layout_marginLeft="10sp"
             />
@@ -65,7 +65,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nhập Phân Loại        :"
+            android:text="@string/add_classify_product"
             android:textColor="#000000"
             android:layout_marginLeft="10sp"
             android:layout_marginTop="15sp"
@@ -89,7 +89,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nhập Giá Sản Phẩm:"
+            android:text="@string/add_price_product"
             android:textColor="#000000"
             android:layout_marginLeft="10sp"
             />
@@ -110,7 +110,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Xuất Xứ Sản Phẩm  :"
+            android:text="@string/add_origin_product"
             android:textColor="#000000"
             android:layout_marginLeft="10sp"
             />
@@ -142,7 +142,7 @@
             android:layout_marginLeft="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="chọn hình"
+            android:text="@string/choose_img_product"
             android:id="@+id/btnChonhinh"
             />
 
@@ -153,7 +153,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tiến Hành"
+        android:text="@string/proceed"
         android:layout_gravity="center"
         android:id="@+id/btnTienHanhSP"/>
 

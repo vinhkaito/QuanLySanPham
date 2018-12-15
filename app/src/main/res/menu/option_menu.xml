@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/opmenutThemLoai"
-        android:title="Thêm Phân Loại" />
+        android:title="@string/add_classify" />
     <item
         android:id="@+id/opmenutDSSP"
-        android:title="Danh Sách Sản Phẩm" />
+        android:title="@string/title_list_product" />
     <item
         android:id="@+id/opmenuMap"
-        android:title="Giới thiệu" />
+        android:title="@string/menu_about" />
     <item
         android:id="@+id/opmenuThoat"
-        android:title="Thoát" />
+        android:title="@string/menu_exit" />
 </menu>

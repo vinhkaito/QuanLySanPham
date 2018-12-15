@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Product Manager</string>
+    <string name="title_activity_maps">GoogleMap</string>
+    <string name="title_login">Please Login</string>
+    <string name="username_login">Username</string>
+    <string name="password_login">Password</string>
+    <string name="button_login">Login</string>
+    <string name="add_classify">Add Type</string>
+    <string name="update_classify">Update Type</string>
+    <string name="add_name_classify">Add Name Type</string>
+    <string name="proceed">Proceed</string>
+    <string name="title_list_classify">List Type</string>
+    <string name="code_classify">Code Type</string>
+    <string name="name_classify">Name Type</string>
+    <string name="add_product">Add Product</string>
+    <string name="update_product">Update Product</string>
+    <string name="add_code_prodcut">Add Code Product</string>
+    <string name="add_name_product">Add Name Product</string>
+    <string name="add_classify_product">Add Type Product</string>
+    <string name="add_price_product">Add Price Product</string>
+    <string name="add_origin_product">Add Origin Product</string>
+    <string name="choose_img_product">Chose Images</string>
+    <string name="title_list_product">List Product</string>
+    <string name="code_prodcut">Code Product</string>
+    <string name="name_product">Name Product</string>
+    <string name="classify_product">Type Product</string>
+    <string name="price_product">Price Product</string>
+    <string name="origin_product">Origin Product</string>
+    <string name="img_product">Image Product</string>
+    <string name="menu_update">Update</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_about">About</string>
+    <string name="menu_exit">Exit</string>
+    <string name="login_success">Login Success</string>
+    <string name="login_fail">Login Fail</string>
+    <string name="add_success">Add  Success</string>
+    <string name="update_success">Update Success</string>
+    <string name="add_fail">Add Fail</string>
+    <string name="update_fail">Update Fail</string>
+    <string name="delete_success">Delete Success</string>
+    <string name="delete_fail">Delete Fail</string>
+</resources>

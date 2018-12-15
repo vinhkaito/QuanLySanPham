@@ -23,7 +23,7 @@
                     android:id="@+id/txtMaPL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mã Phân Loại: "/>
+                    android:text="@string/code_classify"/>
                     />
             </LinearLayout>
 
@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtTenPL"
-                    android:text="Tên Phân Loại: "
+                    android:text="@string/name_classify"
                     />
             </LinearLayout>
 

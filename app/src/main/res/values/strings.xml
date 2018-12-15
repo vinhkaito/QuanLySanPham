@@ -1,4 +1,49 @@
 <resources>
     <string name="app_name">QuanLySanPham</string>
-    <string name="title_activity_maps">GoogleMap</string>
+    <string name="title_activity_maps">Bản Đồ</string>
+    <string name="title_login">Vui Lòng Đăng Nhập</string>
+    <string name="username_login">Tài Khoản</string>
+    <string name="password_login">Mật Khẩu</string>
+    <string name="button_login">Đăng Nhập</string>
+    
+    <string name="add_classify">Thêm Phân Loại</string>
+    <string name="update_classify">Cập Nhật Phân Loại</string>
+    <string name="add_name_classify">Nhập Tên Phân Loại</string>
+    <string name="proceed">Tiến Hành</string>
+    
+    <string name="title_list_classify">Danh Sách Phân Loại</string>
+    <string name="code_classify">Mã Phân Loại</string>
+    <string name="name_classify">Tên Phân Loại</string>
+
+    <string name="add_product">Thêm Sản Phẩm</string>
+    <string name="update_product">Cập Nhật Sản Phẩm</string>
+    <string name="add_code_prodcut">Nhập Mã Sản Phẩm</string>
+    <string name="add_name_product">Nhập Tên Sản Phẩm</string>
+    <string name="add_classify_product">Nhập Loại Sản Phẩm</string>
+    <string name="add_price_product">Nhập Giá Sản Phẩm</string>
+    <string name="add_origin_product">Xuất Xứ Sản Phẩm </string>
+    <string name="choose_img_product">Chọn Hình</string>
+
+    <string name="title_list_product">Danh Sách Sản Phẩm</string>
+    <string name="code_prodcut">Mã Sản Phẩm</string>
+    <string name="name_product">Tên Sản Phẩm</string>
+    <string name="classify_product">Loại Sản Phẩm</string>
+    <string name="price_product">Giá Sản Phẩm</string>
+    <string name="origin_product">Xuất Xứ Sản Phẩm </string>
+    <string name="img_product">Hình Sản Phẩm</string>
+
+    <string name="menu_update">Cập nhật</string>
+    <string name="menu_delete">Xóa</string>
+    <string name="menu_about">Giới thiệu</string>
+    <string name="menu_exit">Thoát</string>
+    
+    <string name="login_success">Đăng Nhập Thành Công</string>
+    <string name="login_fail">Đăng Nhập Thất Bại</string>
+    <string name="add_success">Thêm Thành Công</string>
+    <string name="add_fail">Thêm Thất Bại</string>
+    <string name="update_success">Cập Nhật Thành Công</string>
+    <string name="update_fail">Cập Nhật Thất Bại</string>
+    <string name="delete_success">Xóa Thành Công</string>
+    <string name="delete_fail">Xóa Thất Bại</string>
+
 </resources>

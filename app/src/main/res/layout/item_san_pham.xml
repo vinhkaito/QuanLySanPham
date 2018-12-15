@@ -23,9 +23,9 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mã Sản Phẩm: "
+                android:text="@string/code_prodcut"
                 android:textSize="20sp"
-                android:textColor="#00ff00"
+                android:textColor="#000000"
                 android:id="@+id/txtMaSP"
                 />
 
@@ -33,9 +33,9 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên Sản Phẩm: "
+                android:text="@string/name_product"
                 android:textSize="20sp"
-                android:textColor="#00ff00"
+                android:textColor="#000000"
                 android:id="@+id/txtTenSP"
                 />
 
@@ -44,8 +44,8 @@
                 android:id="@+id/txtPhanLoaiSP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phân Loại        : "
-                android:textColor="#00ff00"
+                android:text="@string/classify_product"
+                android:textColor="#000000"
                 android:textSize="20sp" />
 
         </LinearLayout>
