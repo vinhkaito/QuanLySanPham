@@ -40,4 +40,7 @@
     <string name="update_fail">Update Fail</string>
     <string name="delete_success">Delete Success</string>
     <string name="delete_fail">Delete Fail</string>
+    <string name="delete_warning">Warning: When deleting a product listing product category will also be deleted. Please be careful</string>
+    <string name="delete_yes">Yes</string>
+    <string name="delete_no">No</string>
 </resources>

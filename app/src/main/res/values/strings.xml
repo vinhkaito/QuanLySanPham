@@ -45,5 +45,8 @@
     <string name="update_fail">Cập Nhật Thất Bại</string>
     <string name="delete_success">Xóa Thành Công</string>
     <string name="delete_fail">Xóa Thất Bại</string>
+    <string name="delete_warning">Cảnh báo: Khi xóa loại sản phẩm danh sách sản phẩm cũng sẽ bị xóa. Xin cẩn trọng</string>
+    <string name="delete_yes">Có</string>
+    <string name="delete_no">Không</string>
 
 </resources>

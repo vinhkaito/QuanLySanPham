@@ -1,9 +1,11 @@
 package com.quanlysanpham.phanloai;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -102,16 +104,41 @@ public class DanhSachPhanLoai extends AppCompatActivity {
             }
             case R.id.comenuXoa:
             {
-                if (database.delete("PhanLoai" , "MaPhanLoai" + " = ? ", new String[]{String.valueOf(dsPL.get(pos).getMaPL())}) == 1) {
-                    dsPL.remove(pos);
-                    pos = -1;
-                    adapter.notifyDataSetChanged();
-                    Toast.makeText(getApplicationContext(),R.string.delete_success, Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),R.string.delete_fail, Toast.LENGTH_LONG).show();
-                }
-                break;
+//                if (database.delete("PhanLoai" , "MaPhanLoai" + " = ? ", new String[]{String.valueOf(dsPL.get(pos).getMaPL())}) == 1) {
+//                    dsPL.remove(pos);
+//                    pos = -1;
+//                    adapter.notifyDataSetChanged();
+//                    Toast.makeText(getApplicationContext(),R.string.delete_success, Toast.LENGTH_LONG).show();
+//                }
+//                else {
+//                    Toast.makeText(getApplicationContext(),R.string.delete_fail, Toast.LENGTH_LONG).show();
+//                }
+//                break;
+                DialogInterface.OnClickListener diOnClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                if (database.delete("PhanLoai" , "MaPhanLoai" + " = ? ", new String[]{String.valueOf(dsPL.get(pos).getMaPL())}) > 0) {
+                                    dsPL.remove(pos);
+                                    pos = -1;
+                                    adapter.notifyDataSetChanged();
+                                    Toast.makeText(getApplicationContext(),R.string.delete_success, Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    Toast.makeText(getApplicationContext(),R.string.delete_fail, Toast.LENGTH_LONG).show();
+                                }
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                Toast.makeText(getApplicationContext(),R.string.delete_fail, Toast.LENGTH_LONG).show();
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(DanhSachPhanLoai.this);
+                builder.setMessage(R.string.delete_warning).setPositiveButton(R.string.delete_yes,diOnClickListener).setNegativeButton(R.string.delete_no,diOnClickListener).show();
             }
         }
 
