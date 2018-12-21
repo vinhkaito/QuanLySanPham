@@ -49,16 +49,7 @@ public class DanhSachSanPham extends AppCompatActivity {
     }
 
     private void loaddata() {
-        database = Database.initDatabase(this,DATABASE_NAME);
-        Cursor cursor  = database.rawQuery("SELECT * FROM SanPham",null);
-        for (int i=0 ; i < cursor.getCount() ;i++)
-        {
-            cursor.moveToPosition(i);
-//            PhanLoai pl = DanhSachPhanLoai.dsPL; //lam tiep o day
-//            SanPham sp = new SanPham(cursor.getInt(0),cursor.getString(1),pl,cursor.getBlob(3),cursor.getString(4),cursor.getString(5));
-//            dsSP.add(sp);
-            adapter.notifyDataSetChanged();
-        }
+
     }
 
     private void addEvents() {
